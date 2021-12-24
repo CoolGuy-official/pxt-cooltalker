@@ -46,7 +46,7 @@ namespace CoolTalker {
     }
 
     //% blockId=CoolTalker_when_receive
-    //% block="当听见| %word| " weight=90
+    //% block="当听见| %wordword=TalkerWord " weight=90
     export function WhenReceiveWord(word: string, body: () => void) {
         let talkres = '';
         serial.onDataReceived(serial.delimiters(Delimiters.NewLine), () => {
@@ -56,6 +56,27 @@ namespace CoolTalker {
         basic.showString(word);
         if (talkres == word) {
             body();
+        }
+    }
+
+    let talkres = '';
+    //% blockId=CoolTalker_isheard
+    //% block="是否听见%word=TalkerWord?" weight=85
+    export function isHeard(word: string) {
+        let talktmp = serial.readString();
+        if (talktmp != '') {
+            if (talktmp === word + '\n') {
+                return true;
+            }
+            talkres = talktmp;
+            return false;
+        }
+        else {
+            if (talkres === word + '\n') {
+                talkres = '';
+                return true;
+            }
+            return false;
         }
     }
 
@@ -69,8 +90,8 @@ namespace CoolTalker {
 
     //% blockId=TalkerWord block="%word" weight=91
     //% blockGap=8
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    //% name.fieldOptions.tooltips="false" name.fieldOptions.width="250"
+    //% word.fieldEditor="gridpicker" word.fieldOptions.columns=4
+    //% word.fieldOptions.tooltips="false" word.fieldOptions.width="250"
     export function TalkerWord(word: TalkerWords): string {
         return TalkerWordsStr[word];
     }
