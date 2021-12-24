@@ -22,6 +22,16 @@ enum TalkerWords {
 }
 const TalkerWordsStr = ['wakeup', 'poweron', 'poweroff', 'send', 'hello', 'bye'];
 
+enum TalkerCmd {
+    //% block=发送
+    send = 0,
+    //% block=你好
+    hello = 1,
+    //% block=再见
+    goodbye = 2,
+}
+const TalkerCmdStr = ['\u0001', '\u0002', '\u0003'];
+
 /**
  * Talking extension for SU-03T
  */
@@ -47,6 +57,22 @@ namespace CoolTalker {
         if (talkres == word) {
             body();
         }
+    }
+
+    //% blockId=CoolTalker_sendcmd
+    //% block="小酷宝说 %str| " weight=80
+    export function Sendcmd(cmd: TalkerCmd) {
+        serial.writeString("st")
+        serial.writeString(TalkerCmdStr[cmd])
+        serial.writeString("ed")
+    }
+
+    //% blockId=TalkerWord block="%word" weight=91
+    //% blockGap=8
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    //% name.fieldOptions.tooltips="false" name.fieldOptions.width="250"
+    export function TalkerWord(word: TalkerWords): string {
+        return TalkerWordsStr[word];
     }
 
 }
