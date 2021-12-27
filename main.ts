@@ -9,28 +9,74 @@ enum TalkerPin {
 enum TalkerWords {
     //% block=开机
     wakeup = 0,
+    //% block=播放音乐
+    play,
+    //% block=关闭音乐
+    stop,
+    //% block=更换音乐
+    next,
+    //% block=调高音量
+    highv,
+    //% block=降低音量
+    downv,
+    //% block=打开音乐盒
+    openv,
+    //% block=歌曲一
+    song1,
+    //% block=歌曲二
+    song2,
+    //% block=歌曲三
+    song3,
+    //% block=打开洗衣机
+    mrun0,
+    //% block=打开摩天轮
+    mrun1,
+    //% block=打开电风扇
+    mrun2,
+    //% block=打开电机
+    mrun3,
+    //% block=小车前进
+    crun0,
+    //% block=小车右转
+    crun1,
+    //% block=小车左转
+    crun3,
+    //% block=小车后退
+    crun2,
+    //% block=打开
+    open,
+    //% block=关闭
+    close,
     //% block=开灯
-    poweron,
+    lion,
     //% block=关灯
-    poweroff,
-    //% block=发送
-    send,
-    //% block=你好
-    hello,
-    //% block=再见
-    goodbye,
+    lioff,
+    //% block=降低
+    low,
+    //% block=提高
+    high,
+    //% block=开始
+    start,
+    //% block=结束
+    end,
+    //% block=开始计时
+    clock,
+    //% block=关闭定时
+    clock0,
+    //% block=定时结束
+    timeup,
 }
-const TalkerWordsStr = ['wakeup', 'poweron', 'poweroff', 'send', 'hello', 'bye'];
+const TalkerWordsStr = ['wakeup', 'play', 'stop', 'next', 'highv', 'downv', 'openv', 'song1', 'song2', 'song3', 'mrun0', 'mrun1', 'mrun2', 'mrun3', 'crun0', 'crun1', 'crun3', 'crun2', 'open', 'close', 'lion', 'lioff', 'low', 'high', 'start', 'end', 'clock', 'clock0', 'timeup'];
 
 enum TalkerCmd {
-    //% block=发送
-    send = 0,
     //% block=你好
-    hello = 1,
+    hello = 0,
     //% block=再见
-    goodbye = 2,
+    goodbye,
+    //% block=时间到
+    timeout,
 }
-const TalkerCmdStr = ['\u0001', '\u0002', '\u0003'];
+const TalkerCmdStr = ['\u0001', '\u0002', '\u0003', '\u0004', '\u0005', '\u0006', '\u0007', '\u0008', '\u0009', '\u0010', '\u0011', '\u0012', '\u0013', '\u0014', '\u0015', '\u0016', '\u0017', '\u0018', '\u0019', '\u0020'];
 
 /**
  * Talking extension for SU-03T
@@ -82,6 +128,9 @@ namespace CoolTalker {
 
     //% blockId=CoolTalker_sendcmd
     //% block="小酷宝说 %str| " weight=80
+    //% str.fieldEditor="gridpicker" str.fieldOptions.columns=4
+    //% str.fieldOption.tooltips="false"
+    //% str.fieldOptions.width="250"
     export function Sendcmd(cmd: TalkerCmd) {
         serial.writeString("st")
         serial.writeString(TalkerCmdStr[cmd])
@@ -90,8 +139,9 @@ namespace CoolTalker {
 
     //% blockId=TalkerWord block="%word" weight=91
     //% blockGap=8
-    //% word.fieldEditor="gridpicker" word.fieldOptions.columns=4
-    //% word.fieldOptions.tooltips="false" word.fieldOptions.width="250"
+    //% word.fieldEditor="gridpicker" word.fieldOptions.columns=6
+    //% word.fieldOptions.tooltips="false" 
+    //% word.fieldOptions.width="250"
     export function TalkerWord(word: TalkerWords): string {
         return TalkerWordsStr[word];
     }
