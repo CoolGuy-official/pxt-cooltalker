@@ -91,8 +91,19 @@ enum TalkerWords {
     clock,
     //% block=定时结束
     timeup,
+    //% block=打开加湿器
+    humidifler,
+    //% block=打开加热
+    hot,
+    //% block=打开通风
+    wind,
+    //% block=补红光
+    red,
+    //% block=补蓝灯
+    blue,
+
 }
-const TalkerWordsStr = ['wakeup', 'play', 'stop', 'next', 'highv', 'downv', 'openv', 'song1', 'song2', 'song3', 'tvon', 'tvof', 'carton', 'lion', 'lioff', 'stli', 'reli', 'roll', 'mrun0', 'mrun1', 'mrun2', 'stopm2', 'stopm3', 'stopm1', 'mrun3', 'stopm', 'crun0', 'crun1', 'crun3', 'crun2', 'wateri', 'watero', 'dooro', 'doorc', 'open', 'close', 'low', 'high', 'start', 'end', 'clock', 'timeup'];
+const TalkerWordsStr = ['wakeup', 'play', 'stop', 'next', 'highv', 'downv', 'openv', 'song1', 'song2', 'song3', 'tvon', 'tvof', 'carton', 'lion', 'lioff', 'stli', 'reli', 'roll', 'mrun0', 'mrun1', 'mrun2', 'stopm2', 'stopm3', 'stopm1', 'mrun3', 'stopm', 'crun0', 'crun1', 'crun3', 'crun2', 'wateri', 'watero', 'dooro', 'doorc', 'open', 'close', 'low', 'high', 'start', 'end', 'clock', 'timeup', 'humidifler', 'hot', 'wind', 'red', 'blue'];
 
 enum TalkerCmd {
     //% block=你好
@@ -171,9 +182,9 @@ namespace CoolTalker {
     //% str.fieldOption.tooltips="false"
     //% str.fieldOptions.width="250"
     export function Sendcmd(cmd: TalkerCmd) {
-        serial.writeString("st")
-        serial.writeString(TalkerCmdStr[cmd])
-        serial.writeString("ed")
+        serial.writeString("st");
+        serial.writeString(TalkerCmdStr[cmd]);
+        serial.writeString("ed");
     }
 
     //% blockId=TalkerWord block="%word"
