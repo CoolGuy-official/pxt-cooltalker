@@ -93,13 +93,13 @@ enum TalkerWords {
     timeup,
     //% block=打开加湿器
     humidifler,
-    //% block=打开加热
+    //% block=加热
     hot,
-    //% block=打开通风
+    //% block=通风
     wind,
-    //% block=补红光
+    //% block=红光
     red,
-    //% block=补蓝灯
+    //% block=蓝光
     blue,
 
 }
