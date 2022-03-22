@@ -91,8 +91,8 @@ enum TalkerWords {
     clock,
     //% block=定时结束
     timeup,
-    //% block=打开加湿器
-    humidifler,
+    //% block=加湿器
+    humidifier,
     //% block=加热
     hot,
     //% block=通风
@@ -101,9 +101,11 @@ enum TalkerWords {
     red,
     //% block=蓝光
     blue,
+    //% block=浇水
+    water,
 
 }
-const TalkerWordsStr = ['wakeup', 'play', 'stop', 'next', 'highv', 'downv', 'openv', 'song1', 'song2', 'song3', 'tvon', 'tvof', 'carton', 'lion', 'lioff', 'stli', 'reli', 'roll', 'mrun0', 'mrun1', 'mrun2', 'stopm2', 'stopm3', 'stopm1', 'mrun3', 'stopm', 'crun0', 'crun1', 'crun3', 'crun2', 'wateri', 'watero', 'dooro', 'doorc', 'open', 'close', 'low', 'high', 'start', 'end', 'clock', 'timeup', 'humidifler', 'hot', 'wind', 'red', 'blue'];
+const TalkerWordsStr = ['wakeup', 'play', 'stop', 'next', 'highv', 'downv', 'openv', 'song1', 'song2', 'song3', 'tvon', 'tvof', 'carton', 'lion', 'lioff', 'stli', 'reli', 'roll', 'mrun0', 'mrun1', 'mrun2', 'stopm2', 'stopm3', 'stopm1', 'mrun3', 'stopm', 'crun0', 'crun1', 'crun3', 'crun2', 'wateri', 'watero', 'dooro', 'doorc', 'open', 'close', 'low', 'high', 'start', 'end', 'clock', 'timeup', 'humidifier', 'hot', 'wind', 'red', 'blue', 'water'];
 
 enum TalkerCmd {
     //% block=你好
